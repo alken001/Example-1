@@ -1,27 +1,21 @@
-import models.Point;
-import models.Shape;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyApplication {
-    public static void main(String[] args) throws FileNotFoundException {
-        File file = new File("C:\\Users\\Ернар\\IdeaProjects\\Teach\\src\\source.txt");
-
-        Scanner sc = new Scanner(file);
-        Shape shape = new Shape();
-
-        while (sc.hasNext()) {
-            double x = sc.nextDouble();
-            double y = sc.nextDouble();
-
-            Point point = new Point(x, y);
-            shape.addPoint(point);
+    public static void main(String[] args) {
+        // Create 10 random points and form a shape
+        List<Point> points = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            double x = Math.random() * 10;
+            double y = Math.random() * 10;
+            points.add(new Point(x, y));
         }
 
-        System.out.println(shape.calculatePerimeter());
-        System.out.println(shape.getLongestSide());
-        System.out.println(shape.getAverageSide());
+        Shape shape = new Shape(points);
+
+        // Test the methods
+        System.out.println("Perimeter: " + shape.perimeter());
+        System.out.println("Longest Side: " + shape.longestSide());
+        System.out.println("Average Side: " + shape.averageSide());
     }
 }

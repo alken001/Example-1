@@ -1,43 +1,36 @@
-package models;
 import java.util.ArrayList;
+import java.util.List;
+
 public class Shape {
+    private List<Point> points;
 
-    private ArrayList<Point> array;
-    public Shape() {
-        array = new ArrayList<Point>();
+    public Shape(List<Point> points) {
+        this.points = points;
     }
 
-    public void addPoint(Point point) {
-        array.add(point);
-    }
-
-
-    public double calculatePerimeter() {
+    public double perimeter() {
+        // Implement the perimeter calculation here
         double per = 0;
-        for(int i = 0; i < 9; i++) {
-            per += array.get(i).distanceTo(array.get(i + 1));
+        for (int i = 0; i < points.size(); i++) {
+            per += points.get(i).distanceTo(points.get((i + 1) % points.size()));
         }
-        per += array.get(0).distanceTo(array.get(9));
         return per;
     }
 
-    public double getAverageSide() {
-        return calculatePerimeter() / 10;
-    }
-
-    public double getLongestSide() {
+    public double longestSide() {
+        // Implement finding the longest side here
         double max = 0;
-        double current;
-        for(int i = 0; i < 9; i++) {
-            current = array.get(i).distanceTo(array.get(i + 1));
-            if(current > max) {
+        for (int i = 0; i < points.size(); i++) {
+            double current = points.get(i).distanceTo(points.get((i + 1) % points.size()));
+            if (current > max) {
                 max = current;
             }
         }
-        current = array.get(0).distanceTo(array.get(9));
-        if(current > max) {
-            max = current;
-        }
         return max;
+    }
+
+    public double averageSide() {
+        // Implement calculating the average side length here
+        return perimeter() / points.size();
     }
 }

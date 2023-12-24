@@ -1,5 +1,3 @@
-package models;
-
 public class Point {
     private double x;
     private double y;
@@ -9,14 +7,13 @@ public class Point {
         this.y = y;
     }
 
-    public double distanceTo(Point point) {
-        return Math.sqrt(Math.pow((this.x - point.x), 2) + Math.pow((this.y - point.y), 2));
+    public double distanceTo(Point destination) {
+        // Implement the distance calculation here
+        return Math.sqrt(Math.pow(destination.x - this.x, 2) + Math.pow(destination.y - this.y, 2));
     }
 
     @Override
     public String toString() {
-        return "Point{" +
-                "x=" + x +
-                ", y=" + y;
+        return "(" + x + ", " + y + ")";
     }
 }
