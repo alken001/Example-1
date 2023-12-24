@@ -17,3 +17,4 @@ public class Point {
         return "(" + x + ", " + y + ")";
     }
 }
+
